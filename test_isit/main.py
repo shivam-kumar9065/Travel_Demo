@@ -89,14 +89,14 @@ async def read_root():
 def process_input(input_data: InputRequest):
 
     csv_path = process_r5r(
-        data_path= r"/home/student-00-15218eda6daa/Travel_Demo/test_isit/metz/metz",
-        origin_str="49.06850402482493, 6.185948275507372",
-        destination_str="49.12038556570271, 6.176077061350479",
-        walk_time=20,
-        bicycle_time=20,
-        max_trip_duration=120,
-        car_time=5,
-        transit_freq_window_min=60
+        data_path=input_data.data_path,
+        origin_str=input_data.origin_str,
+        destination_str=input_data.destination_str,
+        walk_time=input_data.walk_time,
+        bicycle_time=input_data.bicycle_time,
+        max_trip_duration=input_data.max_trip_duration,
+        car_time=input_data.car_time,
+        transit_freq_window_min=input_data.transit_freq_window_min
     )
 
 
