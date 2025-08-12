@@ -89,7 +89,7 @@ async def read_root():
 def process_input(input_data: InputRequest):
 
     csv_path = process_r5r(
-        data_path= r"C:\\Users\\z047364\\Desktop\\metz\\metz",
+        data_path= r"/home/student-00-15218eda6daa/Travel_Demo/test_isit/metz/metz",
         origin_str="49.06850402482493, 6.185948275507372",
         destination_str="49.12038556570271, 6.176077061350479",
         walk_time=20,
