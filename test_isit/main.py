@@ -243,12 +243,12 @@ def build_transport_structure(flat_data):
 async def read_root():
     return {"message": "Welcome to the Trip Planner API"}
 
-
+DEFAULT_DATA_PATH = "/home/student-02-b0eb41bdfc2c/Travel_Demo/test_isit/metz/metz"
 @app.post("/process")
 def process_input(input_data: InputRequest):
-
+    data_path = DEFAULT_DATA_PATH
     csv_path = process_r5r(
-        data_path=input_data.data_path,
+        data_path,
         origin_str=input_data.origin_str,
         destination_str=input_data.destination_str,
         walk_time=input_data.walk_time,
