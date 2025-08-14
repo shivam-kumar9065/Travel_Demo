@@ -4,7 +4,7 @@ import pandas as pd
 import uuid
 import os
 
-os.environ['R_HOME'] = '/usr/bin/R'
+os.environ['R_HOME'] = '/usr/lib/R'
 os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-21-openjdk-amd64/bin/java'
 
 import rpy2
