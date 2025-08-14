@@ -6,6 +6,7 @@ import os
 
 os.environ['R_HOME'] = '/usr/lib/R'
 os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-21-openjdk-amd64'
+os.environ['LD_LIBRARY_PATH'] = '/usr/lib/jvm/java-21-openjdk-amd64/lib/server'
 
 import rpy2
 import rpy2.robjects as ro
