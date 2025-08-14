@@ -180,7 +180,7 @@ app = FastAPI()
 
 
 class InputRequest(BaseModel):
-    data_path: str
+    data_path: Optional[str] = None
     origin_str: str
     destination_str: str
     walk_time: int = 20
