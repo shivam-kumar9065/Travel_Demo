@@ -5,7 +5,7 @@ import uuid
 import os
 
 os.environ['R_HOME'] = '/usr/bin/R'
-os.environ['JAVA_HOME'] = '/usr/bin/java'
+os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-21-openjdk-amd64/bin/java'
 
 import rpy2
 import rpy2.robjects as ro
