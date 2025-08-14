@@ -175,6 +175,8 @@ import json
 from collections import defaultdict
 
 from functions import process_r5r  
+from typing import Optional
+
 
 app = FastAPI()
 
