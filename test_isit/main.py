@@ -154,16 +154,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 # testing/main.py
 
 from fastapi import FastAPI, HTTPException
@@ -192,6 +182,9 @@ class InputRequest(BaseModel):
     transit_freq_window_min: int = 60
 
 
+
+DEFAULT_DATA_PATH = "/home/student-02-b0eb41bdfc2c/Travel_Demo/test_isit/metz/metz"
+
 def build_transport_structure(flat_data):
     """
     Takes flat list of trip records and rearranges them
@@ -200,27 +193,27 @@ def build_transport_structure(flat_data):
     modes_dict = defaultdict(lambda: {"mode_type": None, "mode_lable": None, "routes": []})
 
     for row in flat_data:
-        # Use Mode_Transport for grouping (values remain as-is)
+        
         mode_type = row.get("Mode_Transport")
         mode_label = row.get("Mode_Transport")
 
         route_option = row.get("option")
 
-        # Create new mode entry if needed
+        
         if not modes_dict[mode_type]["mode_type"]:
             modes_dict[mode_type]["mode_type"] = mode_type
             modes_dict[mode_type]["mode_lable"] = mode_label
 
-        # Find or create route entry
+        
         route = next((r for r in modes_dict[mode_type]["routes"] if r["option"] == route_option), None)
         if not route:
             route = {"option": route_option, "segments": []}
             modes_dict[mode_type]["routes"].append(route)
 
-        # Add segment (field names only changed, values unchanged)
+        
         segment = {
             "mode": row.get("mode"),
-            "order": row.get("segment"),  # renamed field
+            "order": row.get("segment"),  
             "route_no": row.get("route"),
             "source": {
                 "latitude": row.get("from_lat"),
@@ -245,7 +238,7 @@ def build_transport_structure(flat_data):
 async def read_root():
     return {"message": "Welcome to the Trip Planner API"}
 
-DEFAULT_DATA_PATH = "/home/student-02-b0eb41bdfc2c/Travel_Demo/test_isit/metz/metz"
+
 @app.post("/process")
 def process_input(input_data: InputRequest):
     data_path = DEFAULT_DATA_PATH
@@ -296,7 +289,7 @@ def process_input(input_data: InputRequest):
     cleaned_data = json.loads(df.to_json(orient="records"))
     os.remove(csv_path)
 
-    # Transform flat list into Transport.json hierarchy
+    
     transformed_data = build_transport_structure(cleaned_data)
 
     return {
